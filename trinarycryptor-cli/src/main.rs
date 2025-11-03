@@ -1,4 +1,4 @@
-use trinarycryptor::{tables::OLD_TABLE, decode_text};
+use trinarycryptor::{decode_text, encode_text, tables::OLD_TABLE};
 use clap::{Parser, ValueEnum};
 
 #[derive(ValueEnum, Clone, Default)]
@@ -36,7 +36,7 @@ fn main() {
 
 	let result = match args.mode {
 		OperatingMode::Decode => decode_text(&args.input, encryption_table),
-		OperatingMode::Encode => todo!(),
+		OperatingMode::Encode => encode_text(&args.input, encryption_table),
 	};
 
 	println!("{}", result);
