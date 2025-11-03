@@ -8,6 +8,12 @@ enum EncryptionType {
 	New,
 }
 
+#[derive(ValueEnum, Clone)]
+enum OperatingMode {
+	Decode,
+	Encode,
+}
+
 #[derive(Parser)]
 #[command(version, about = "Trinary code decoder and encoder")]
 struct Args {
@@ -15,6 +21,9 @@ struct Args {
 
 	#[arg(short, long, default_value_t, value_enum)]
 	r#type: EncryptionType,
+
+	#[arg(short, long, value_enum)]
+	mode: OperatingMode,
 }
 
 fn main() {
@@ -25,6 +34,10 @@ fn main() {
 		EncryptionType::New => todo!(),
 	};
 
-	let decoded_string = decode_text(&args.input, encryption_table);
-	println!("{}", decoded_string)
+	let result = match args.mode {
+		OperatingMode::Decode => decode_text(&args.input, encryption_table),
+		OperatingMode::Encode => todo!(),
+	};
+
+	println!("{}", result);
 }
