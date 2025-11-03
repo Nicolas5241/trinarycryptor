@@ -1,0 +1,12 @@
+[package]
+name = "trinarycryptor-lib"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "trinarycryptor"
+path = "src/lib.rs"
+crate-type = ["rlib"]
+
+[dependencies]
+phf = { version = "0.13.1", features = ["macros"] }

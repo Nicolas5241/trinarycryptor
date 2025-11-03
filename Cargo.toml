@@ -1,0 +1,6 @@
+[workspace]
+members = [
+	"trinarycryptor-lib",
+	"trinarycryptor-cli",
+]
+resolver = "3"
