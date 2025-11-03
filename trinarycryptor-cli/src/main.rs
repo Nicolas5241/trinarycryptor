@@ -1,3 +1,5 @@
+#![windows_subsystem = "console"]
+
 use trinarycryptor::{decode_text, encode_text, tables::{NEW_TABLE, OLD_TABLE}};
 use clap::{Parser, ValueEnum};
 
