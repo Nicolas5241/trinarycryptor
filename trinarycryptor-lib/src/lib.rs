@@ -22,7 +22,7 @@ pub fn decode_text(text: &str, substitution_table: &SubstitutionTable<&str, char
                 .map(|char| {
                     substitution_table
                         .decoding
-                        .get(&squish_text(&char))
+                        .get(&char)
                         .unwrap_or(&'?')
                 })
                 .collect()
@@ -33,7 +33,7 @@ pub fn decode_text(text: &str, substitution_table: &SubstitutionTable<&str, char
 }
 
 pub fn encode_text(text: &str, substitution_table: &SubstitutionTable<&str, char>) -> String {
-    text.trim()
+	squish_text(&text.trim()
         .split(" ")
         .map(|word| {
             word.chars()
@@ -43,6 +43,7 @@ pub fn encode_text(text: &str, substitution_table: &SubstitutionTable<&str, char
         })
         .collect::<Vec<String>>()
         .join("0")
+	)
 }
 
 #[inline]
